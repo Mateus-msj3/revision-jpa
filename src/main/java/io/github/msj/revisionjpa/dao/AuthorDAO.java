@@ -16,4 +16,9 @@ public class AuthorDAO {
     public void save(Author author) {
         entityManager.persist(author);
     }
+
+    @Transactional
+    public void update(Author author) {
+        entityManager.merge(author);
+    }
 }
