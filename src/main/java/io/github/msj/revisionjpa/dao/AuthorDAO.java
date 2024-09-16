@@ -6,6 +6,8 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.UUID;
+
 @Repository
 public class AuthorDAO {
 
@@ -20,5 +22,10 @@ public class AuthorDAO {
     @Transactional
     public void update(Author author) {
         entityManager.merge(author);
+    }
+
+    @Transactional
+    public void delete(UUID id) {
+        entityManager.remove(this.entityManager.getReference(Author.class, id));
     }
 }
