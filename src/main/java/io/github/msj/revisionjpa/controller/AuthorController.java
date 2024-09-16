@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -41,6 +42,11 @@ public class AuthorController {
     @GetMapping("{id}")
     public Author get(@PathVariable UUID id) {
         return authorDAO.findById(id);
+    }
+
+    @GetMapping
+    public List<Author> getAll() {
+        return authorDAO.findAll();
     }
 
 }
