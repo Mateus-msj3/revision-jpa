@@ -39,4 +39,12 @@ public class AuthorDAO {
     public List<Author> findAll() {
         return entityManager.createQuery("SELECT a FROM Author a").getResultList();
     }
+
+    @Transactional(readOnly = true)
+    public List<Author> findByFirstNameOrLastName(String term) {
+        return entityManager.createQuery("SELECT a FROM Author a WHERE a.firstName like :term OR a.lastName like :term")
+                .setParameter("term", "%" + term + "%")
+                .getResultList();
+    }
+
 }
