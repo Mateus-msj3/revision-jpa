@@ -28,4 +28,9 @@ public class AuthorDAO {
     public void delete(UUID id) {
         entityManager.remove(this.entityManager.getReference(Author.class, id));
     }
+
+    @Transactional(readOnly = true)
+    public Author findById(UUID id) {
+        return entityManager.find(Author.class, id);
+    }
 }

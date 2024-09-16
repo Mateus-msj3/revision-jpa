@@ -4,6 +4,7 @@ import io.github.msj.revisionjpa.dao.AuthorDAO;
 import io.github.msj.revisionjpa.entity.Author;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,6 +36,11 @@ public class AuthorController {
     @DeleteMapping("{id}")
     public void update(@PathVariable UUID id) {
         authorDAO.delete(id);
+    }
+
+    @GetMapping("{id}")
+    public Author get(@PathVariable UUID id) {
+        return authorDAO.findById(id);
     }
 
 }
