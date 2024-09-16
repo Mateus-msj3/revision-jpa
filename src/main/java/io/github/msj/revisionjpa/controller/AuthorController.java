@@ -55,4 +55,9 @@ public class AuthorController {
         return authorDAO.findByFirstNameOrLastName(term);
     }
 
+    @GetMapping("total-elements")
+    public Long getTotalElements() {
+        return authorDAO.count();
+    }
+
 }

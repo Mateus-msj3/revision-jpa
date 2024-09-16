@@ -47,4 +47,9 @@ public class AuthorDAO {
                 .getResultList();
     }
 
+    @Transactional(readOnly = true)
+    public Long count() {
+        return entityManager.createQuery("SELECT count(1) FROM Author a", Long.class).getSingleResult();
+    }
+
 }
